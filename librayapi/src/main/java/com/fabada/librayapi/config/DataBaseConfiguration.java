@@ -48,7 +48,7 @@ public class DataBaseConfiguration {
 
         config.setMaximumPoolSize(10); //maximo de conexão liberada
         config.setMinimumIdle(1); // tamanho inicial do pool
-        config.setPoolName("library-db-pool");
+        config.setPoolName("library");
         config.setMaxLifetime(6000000); //600mil ms (10 minutos)
         config.setConnectionTimeout(1000000); //timeout para conseguir uma conexão
         config.setConnectionTestQuery("select 1"); // query de test

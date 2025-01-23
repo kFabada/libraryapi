@@ -25,6 +25,8 @@ public interface LivroRepository extends JpaRepository<Livro, UUID> {
     // em tempo de compilaçao ele criar uma consula como esta abaixo
     // select * from livro where id_autor = id
 
+
+
     List<Livro> findByAutor(Autor autor);
 
     List<Livro> findByTitulo(String titulo);
@@ -75,5 +77,6 @@ public interface LivroRepository extends JpaRepository<Livro, UUID> {
     @Query("update Livro set dataPublicacao = ?1")
     void updateDataPublicacao(LocalDate localDate);
 
+    Boolean existsByAutor(Autor autor);
 
 }
