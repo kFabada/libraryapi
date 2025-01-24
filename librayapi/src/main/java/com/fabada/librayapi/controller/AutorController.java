@@ -8,6 +8,7 @@ import com.fabada.librayapi.exceptions.OperacaoNaoPermitidaException;
 import com.fabada.librayapi.exceptions.RegistroDuplicadoException;
 import com.fabada.librayapi.model.Autor;
 import com.fabada.librayapi.services.AutorService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -34,7 +35,7 @@ public class AutorController {
     }
 
     @PostMapping
-    public ResponseEntity<?> salvar(@RequestBody AutorDTO autorDTO){
+    public ResponseEntity<?> salvar(@RequestBody @Valid AutorDTO autorDTO){
 
         try {
             Autor autorEntidade = autorDTO.mapearParaAutor();
@@ -53,7 +54,7 @@ public class AutorController {
             return ResponseEntity.created(location).build();
 
         }catch (RegistroDuplicadoException e){
-            var erroDTO = ErroResposta.conflito(e.getMessage());
+            ErroResposta erroDTO = ErroResposta.conflito(e.getMessage());
             return ResponseEntity.status(erroDTO.status()).body(erroDTO);
         }
 
@@ -109,7 +110,7 @@ public class AutorController {
             @RequestParam(value = "nome", required = false) String nome,
             @RequestParam(value = "nacionalidade", required = false) String nacionalidade){
 
-        List<Autor> result = autorService.pesquisa(nome, nacionalidade);
+        List<Autor> result = autorService.pesquisaByExample(nome, nacionalidade);
         List<AutorDTO> lista = result
                 .stream()
                 .map(autor -> new AutorDTO(
