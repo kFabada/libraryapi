@@ -25,7 +25,7 @@ public class Livro {
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID uuid;
 
-    @Column(name = "isbn", length = 20, nullable = false)
+    @Column(name = "isbn", length = 20, nullable = false, unique = true)
     private String isbn;
 
     @Column(name = "titulo", length = 150, nullable = false)
@@ -41,6 +41,16 @@ public class Livro {
     @Column(name = "preco", precision = 18, scale = 2, nullable = false)
     private BigDecimal preco;
 
+//    @Column(name = "id_autor") pode ser feito assim mais esta trabalhado com relacionamento de objetos
+//    private UUID idAutor;
+
+    @ManyToOne(
+            cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY
+    )
+    @JoinColumn(name = "id_autor", nullable = false)
+    private Autor autor;
+
     @CreatedDate
     @Column(name = "data_cadastro")
     private LocalDateTime dataCadastro;
@@ -51,17 +61,6 @@ public class Livro {
 
     @Column(name = "id_usuario")
     private UUID idUsuario;
-
-
-//    @Column(name = "id_autor") pode ser feito assim mais esta trabalhado com relacionamento de objetos
-//    private UUID idAutor;
-
-    @ManyToOne(
-            cascade = CascadeType.ALL,
-            fetch = FetchType.LAZY
-    )
-    @JoinColumn(name = "id_autor", nullable = false)
-    private Autor autor;
 
 
 

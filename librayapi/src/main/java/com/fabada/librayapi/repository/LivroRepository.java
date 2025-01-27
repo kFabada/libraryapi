@@ -5,6 +5,7 @@ import com.fabada.librayapi.model.GeneroLivro;
 import com.fabada.librayapi.model.Livro;
 import jakarta.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -19,7 +20,7 @@ import java.util.UUID;
 * @see LivroRepositoryTest
 
  */
-public interface LivroRepository extends JpaRepository<Livro, UUID> {
+public interface LivroRepository extends JpaRepository<Livro, UUID>, JpaSpecificationExecutor<Livro> {
 
     // Query Metodo para busca os dados
     // em tempo de compilaçao ele criar uma consula como esta abaixo
