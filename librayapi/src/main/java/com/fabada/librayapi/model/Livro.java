@@ -60,7 +60,7 @@ public class Livro {
     private LocalDateTime dataAtualizacao;
 
     @Column(name = "id_usuario")
-    private UUID idUsuario;
+    private UUID idAutor;
 
 
 

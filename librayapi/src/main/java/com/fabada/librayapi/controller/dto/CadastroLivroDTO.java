@@ -24,14 +24,14 @@ public record CadastroLivroDTO(
          @NotNull(message = "o livro precisa pertencer a um autor")
          UUID idAutor) {
 
-    public Livro mapearLivro(){
-        Livro livro = new Livro();
-        livro.setIsbn(this.isbn);
-        livro.setTitulo(this.titulo);
-        livro.setDataPublicacao(dataPublicacao);
-        livro.setGenero(genero);
-        livro.setPreco(preco);
-        livro.setIdUsuario(idAutor);
-        return livro;
-    }
+//    public Livro mapearLivro(){
+//        Livro livro = new Livro();
+//        livro.setIsbn(this.isbn);
+//        livro.setTitulo(this.titulo);
+//        livro.setDataPublicacao(dataPublicacao);
+//        livro.setGenero(genero);
+//        livro.setPreco(preco);
+//        livro.setIdUsuario(idAutor);
+//        return livro;
+//    }
 }
