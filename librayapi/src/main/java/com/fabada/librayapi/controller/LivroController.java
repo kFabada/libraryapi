@@ -11,6 +11,7 @@ import com.fabada.librayapi.services.LivroService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
@@ -26,7 +27,9 @@ public class LivroController implements GenericController {
     private final LivroService livroService;
     private final LivroMappear mappear;
 
+
     @PostMapping
+    @PreAuthorize("hasAnRole('OPERADOR', 'GERENTE')")
     public ResponseEntity<?> salvar(@RequestBody @Valid CadastroLivroDTO cadastroLivroDTO) {
                 System.out.println("Entrou aqui");
              Livro livro = mappear.toEntity(cadastroLivroDTO);

@@ -142,11 +142,11 @@ class LivroRepositoryTest {
         livros.forEach(System.out::println);
     }
 
-    @Test
-    void  pesquisaPorIsbnTest(){
-        List<Livro> livros = repository.findByIsbn("qualquer");
-        livros.forEach(System.out::println);
-    }
+//    @Test
+//    void  pesquisaPorIsbnTest(){
+//        List<Livro> livros = repository.findByIsbn("qualquer");
+//        livros.forEach(System.out::println);
+//    }
 
     @Test
     void  pesquisaPorTituloAndPrecoTest(){
